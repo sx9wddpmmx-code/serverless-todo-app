@@ -1,0 +1,47 @@
+.caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.caption_title {
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.caption_sub {
+    margin-top: 4px;
+    opacity: 0.7;
+}
+
+.caption_right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.title {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.desc {
+    margin-top: 4px;
+    opacity: 0.75;
+    font-size: 0.9rem;
+}
+
+.empty {
+    text-align: center;
+    padding: 16px;
+    opacity: 0.7;
+}
+
+:host ::ng-deep .todo-table .p-datatable-tbody>tr>td {
+    vertical-align: top;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}

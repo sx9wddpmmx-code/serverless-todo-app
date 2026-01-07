@@ -1,0 +1,31 @@
+<p-dialog 
+    [header]="headerText" [(visible)]="visible" [modal]="true" [draggable]="false" 
+    [resizable]="false" [style]="{ width: 'min(600px, 90vw)' }" (onHide)="close()"
+>
+    <div class="form">
+        <div class="field">
+            <label for="title">Titel</label>
+            <input id="title" pInputText [(ngModel)]="draft.title" placeholder="Titel" autocomplete="off" />
+        </div>
+
+        <div class="field">
+            <label for="desc">Beschreibung</label>
+            <textarea id="desc" pTextarea class="textarea" [(ngModel)]="draft.description" rows="4"
+                placeholder="Optional"></textarea>
+        </div>
+
+        <div class="field">
+            <label>Deadline</label>
+            <p-datepicker [(ngModel)]="draft.deadline" [showIcon]="true" dateFormat="dd.mm.yy"
+                placeholder="Optional"></p-datepicker>
+
+        </div>
+
+        <div class="actions">
+            <p-button label="Abbrechen" severity="secondary" text (onClick)="close()"></p-button>
+            <p-button [label]="isEdit ? 'Speichern' : 'Erstellen'" icon="pi pi-check" 
+            [disabled]="!draft.title.trim()"
+                (onClick)="submit()"></p-button>
+        </div>
+    </div>
+</p-dialog>

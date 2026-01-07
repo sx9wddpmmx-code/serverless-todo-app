@@ -1,0 +1,25 @@
+<div class="page">
+    <header class="page_header">
+        <div>
+            <h1 class="page_title">Todo App</h1>
+        </div>
+    </header>
+
+    <main class="page_content">
+        <!--Lösch-Dialog-->
+        <p-confirmDialog />
+
+        <!--Erstell-/Bearbeitungs-Dialog-->
+        <app-todo-dialog [(visible)]="dialogOpen" [todo]="editingTodo" (save)="onSaveTodo($event)"/>
+
+        <!--Todo-Liste-->
+        <app-todo-list 
+            [todos]="(todos$ | async) ?? []" 
+            (toggleTodo)="onToggleTodo($event)"
+            (openCreate)="openCreateDialog()" 
+            (editTodo)="openEditDialog($event)"
+            (requestDelete)="onRequestDelete($event)">
+        </app-todo-list>
+
+    </main>
+</div>

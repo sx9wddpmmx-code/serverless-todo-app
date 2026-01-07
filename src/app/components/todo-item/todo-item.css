@@ -1,0 +1,29 @@
+.title {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.desc {
+    margin-top: 4px;
+    opacity: 0.75;
+    font-size: 0.9rem;
+}
+
+:host ::ng-deep td.col-check {
+    width: 52px;
+}
+
+:host ::ng-deep td.col-deadline {
+    width: 140px;
+    white-space: nowrap;
+}
+
+:host ::ng-deep td.col-status {
+    width: 120px;
+}
+
+:host ::ng-deep td.col-actions {
+    width: 110px;
+    text-align: right;
+    white-space: nowrap;
+}

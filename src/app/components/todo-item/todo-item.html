@@ -1,0 +1,29 @@
+<ng-template #row let-todo="todo">
+    <tr>
+        <td class="col-check">
+            <p-checkbox [binary]="true" [ngModel]="todo.completed" (onChange)="toggle.emit(todo.id)"></p-checkbox>
+        </td>
+
+        <td class="col-task">
+            <div class="title">{{ todo.title }}</div>
+            <div class="desc" *ngIf="todo.description">{{ todo.description }}</div>
+        </td>
+
+        <td class="col-deadline">
+            {{ formatDeadline(todo.deadline) }}
+        </td>
+
+        <td class="col-status">
+            <p-tag [severity]="todo.completed ? 'success' : 'warn'"
+                [value]="todo.completed ? 'Erledigt' : 'Offen'"></p-tag>
+        </td>
+
+        <td class="col-actions">
+            <p-button icon="pi pi-pencil" severity="secondary" text rounded aria-label="Bearbeiten"
+                (onClick)="edit.emit(todo)"></p-button>
+
+            <p-button icon="pi pi-trash" severity="danger" text rounded aria-label="Löschen"
+                (onClick)="requestDelete.emit(todo)"></p-button>
+        </td>
+    </tr>
+</ng-template>

@@ -1,0 +1,42 @@
+<app-todo-item [todo]="dummyTodo" (toggle)="toggleTodo.emit($event)" (edit)="editTodo.emit($event)"
+    (requestDelete)="requestDelete.emit($event)" style="display:none"></app-todo-item>
+
+<p-table 
+    [value]="todos" [paginator]="true" [rows]="8" 
+    [rowsPerPageOptions]="[5, 8, 12, 20]" styleClass="todo-table">
+    <ng-template pTemplate="caption">
+        <div class="caption">
+            <div>
+                <div class="caption_title">ToDo Liste</div>
+                <div class="caption_sub">ToDo & Erledigt</div>
+            </div>
+
+            <div class="caption_right">
+                <p-tag severity="warn" [value]="'ToDo: ' + openCount"></p-tag>
+                <p-tag severity="success" [value]="'Erledigt: ' + doneCount"></p-tag>
+
+                <p-button label="Erstellen" icon="pi pi-plus" (onClick)="openCreate.emit()"></p-button>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 52px"></th>
+            <th>Aufgabe</th>
+            <th style="width: 140px">Frist</th>
+            <th style="width: 120px">Status</th>
+            <th style="width: 110px"></th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-todo>
+        <ng-container [ngTemplateOutlet]="rowTemplate" [ngTemplateOutletContext]="{ todo: todo }"></ng-container>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="5" class="empty">Keine Todos vorhanden.</td>
+        </tr>
+    </ng-template>
+</p-table>
